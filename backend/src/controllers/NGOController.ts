@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import uuidv4 from "uuid/v4";
 
 import NGO from "../database/models/ngo";
+import Incident from "../database/models/incident";
 
 class NGOController {
   static async create(req: Request, res: Response) {
@@ -17,6 +18,15 @@ class NGOController {
     const ongs = await NGO.findAll();
 
     return res.json(ongs);
+  }
+
+  static async listIncidents(req: Request, res: Response) {
+    const ngoId = req.headers.authorization ?? null;
+    const incidents = await Incident.findAll({
+      where: { ngoId },
+      include: [NGO],
+    });
+    return res.json(incidents);
   }
 }
 

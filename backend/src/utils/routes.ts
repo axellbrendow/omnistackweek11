@@ -7,7 +7,7 @@ const routes = express.Router();
 
 routes.route("/sessions").post(SessionController.create);
 routes.route("/ngos").post(NGOController.create).get(NGOController.list);
-routes.route("/ngos/incidents").get(IncidentController.listForNGO);
+routes.route("/ngos/incidents").get(NGOController.listIncidents);
 routes
   .route("/incidents")
   .post(IncidentController.create)
