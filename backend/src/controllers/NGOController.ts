@@ -3,6 +3,7 @@ import uuidv4 from "uuid/v4";
 
 import NGO from "../database/models/ngo";
 import Incident from "../database/models/incident";
+import paginate from "../utils/paginate";
 
 class NGOController {
   static async create(req: Request, res: Response) {
@@ -21,10 +22,12 @@ class NGOController {
   }
 
   static async listIncidents(req: Request, res: Response) {
+    const { page, pageSize } = req.query;
     const ngoId = req.headers.authorization ?? null;
-    const incidents = await Incident.findAll({
+    const incidents = await Incident.findAndCountAll({
       where: { ngoId },
       include: [NGO],
+      ...paginate({ page, pageSize }),
     });
     return res.json(incidents);
   }
