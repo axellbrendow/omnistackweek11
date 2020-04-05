@@ -20,7 +20,7 @@ export default function Details() {
     incident.title
   }" com o valor de ${Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "USD"
+    currency: "USD",
   }).format(incident.value)}`;
 
   const navigateBack = () => {
@@ -35,7 +35,7 @@ export default function Details() {
     MailComposer.composeAsync({
       subject: `Hero of the case: ${incident.title}`,
       recipients,
-      body: message
+      body: message,
     });
   };
 
@@ -57,7 +57,7 @@ export default function Details() {
       <View style={styles.incident}>
         <Text style={[styles.incidentProperty, { marginTop: 0 }]}>NGO:</Text>
         <Text style={styles.incidentValue}>
-          {incident.NGO?.name} from {incident.NGO?.city}/{incident.NGO?.uf}
+          {incident.NGO?.name} from {incident.NGO?.city}/{incident.NGO?.fu}
         </Text>
 
         <Text style={styles.incidentProperty}>CASE:</Text>
@@ -67,7 +67,7 @@ export default function Details() {
         <Text style={styles.incidentValue}>
           {Intl.NumberFormat("en-US", {
             style: "currency",
-            currency: "USD"
+            currency: "USD",
           }).format(incident.value)}
         </Text>
       </View>

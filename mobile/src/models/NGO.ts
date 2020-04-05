@@ -11,7 +11,7 @@ class NGO {
 
   public city!: string;
 
-  public uf!: string;
+  public fu!: string;
 
   public readonly createAt!: Date;
 
