@@ -29,10 +29,12 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "quotes": ["error", "double"],
     "react/jsx-filename-extension": [
       "error",
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
+    "react/jsx-one-expression-per-line": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
