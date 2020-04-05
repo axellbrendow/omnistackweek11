@@ -22,7 +22,7 @@ class NGO extends Model {
 
   public city!: string;
 
-  public uf!: string;
+  public fu!: string;
 
   public readonly createAt!: Date;
 
@@ -55,7 +55,7 @@ NGO.init(
     email: DataTypes.STRING,
     whatsapp: DataTypes.STRING,
     city: DataTypes.STRING,
-    uf: DataTypes.STRING(2),
+    fu: DataTypes.STRING(2),
   },
   { sequelize, tableName: "ngos" }
 );

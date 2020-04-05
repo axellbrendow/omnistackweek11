@@ -20,7 +20,7 @@ export default {
       city: {
         type: sequelize.STRING,
       },
-      uf: {
+      fu: {
         type: sequelize.STRING,
       },
       created_at: {
