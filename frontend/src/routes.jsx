@@ -1,10 +1,10 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Login from './containers/Login';
-import Register from './containers/Register';
-import Profile from './containers/Profile';
-import NewIncident from './containers/NewIncident';
+import Login from "./containers/Login";
+import Register from "./containers/Register";
+import Profile from "./containers/Profile";
+import NewIncident from "./containers/NewIncident";
 
 const Routes = () => (
   <BrowserRouter>

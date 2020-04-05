@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { FiArrowLeft } from "react-icons/fi";
 
-import './styles.css';
+import "./styles.css";
 
-import logoImg from '../../assets/logo.svg';
-import api from '../../services/api';
+import logoImg from "../../assets/logo.svg";
+import api from "../../services/api";
 
 const NewIncident = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [value, setValue] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [value, setValue] = useState("");
   const history = useHistory();
 
-  const ngoId = localStorage.getItem('ngoId');
+  const ngoId = localStorage.getItem("ngoId");
 
   const handleNewIncident = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,15 +21,15 @@ const NewIncident = () => {
     const data = { title, description, value };
 
     try {
-      await api.post('/incidents', data, {
+      await api.post("/incidents", data, {
         headers: {
           Authorization: ngoId,
         },
       });
 
-      history.push('/profile');
+      history.push("/profile");
     } catch (error) {
-      alert('Error when registering this case, try again.');
+      alert("Error when registering this case, try again.");
     }
   };
 
@@ -65,7 +65,9 @@ const NewIncident = () => {
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
-          <button className="button" type="submit">Register</button>
+          <button className="button" type="submit">
+            Register
+          </button>
         </form>
       </div>
     </div>

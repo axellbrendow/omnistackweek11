@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn } from 'react-icons/fi';
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { FiLogIn } from "react-icons/fi";
 
-import './styles.css';
+import "./styles.css";
 
-import logoImg from '../../assets/logo.svg';
-import heroesImg from '../../assets/heroes.png';
-import api from '../../services/api';
+import logoImg from "../../assets/logo.svg";
+import heroesImg from "../../assets/heroes.png";
+import api from "../../services/api";
 
 const Login = () => {
-  const [id, setId] = useState('');
+  const [id, setId] = useState("");
   const history = useHistory();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      const response = await api.post('/sessions', { id });
+      const response = await api.post("/sessions", { id });
 
-      localStorage.setItem('ngoId', id);
-      localStorage.setItem('ngoName', response.data.name);
+      localStorage.setItem("ngoId", id);
+      localStorage.setItem("ngoName", response.data.name);
 
-      history.push('/profile');
+      history.push("/profile");
     } catch (error) {
-      alert('Login failed, try again.');
+      alert("Login failed, try again.");
     }
   };
 
@@ -40,13 +40,13 @@ const Login = () => {
             value={id}
             onChange={(e) => setId(e.target.value)}
           />
-          <button type="submit" className="button">Signin</button>
+          <button type="submit" className="button">
+            Signin
+          </button>
           <Link to="/register" className="back-link">
-            <FiLogIn size={16} color="#E02041" />
-            I do not have an account
+            <FiLogIn size={16} color="#E02041" />I do not have an account
           </Link>
         </form>
-
       </section>
       <img src={heroesImg} alt="Heroes" />
     </div>

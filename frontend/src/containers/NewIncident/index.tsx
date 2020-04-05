@@ -1,3 +1,3 @@
-import NewIncident from './NewIncident';
+import NewIncident from "./NewIncident";
 
 export default NewIncident;

@@ -1,35 +1,40 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { FiArrowLeft } from "react-icons/fi";
 
-import api from '../../services/api';
-import './styles.css';
+import api from "../../services/api";
+import "./styles.css";
 
-import logoImg from '../../assets/logo.svg';
+import logoImg from "../../assets/logo.svg";
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [whatsApp, setWhatsApp] = useState('');
-  const [city, setCity] = useState('');
-  const [fu, setFu] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [city, setCity] = useState("");
+  const [fu, setFu] = useState("");
 
   const history = useHistory();
 
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault();
     const data = {
-      name, email, whatsApp, city, fu,
+      name,
+      email,
+      whatsapp,
+      city,
+      fu,
     };
 
     try {
-      const response = await api.post('ngos', data);
+      const response = await api.post("ngos", data);
 
       alert(`Your access ID: ${response.data.id}`);
 
-      history.push('/');
+      history.push("/");
     } catch (error) {
-      alert('Error in the register, try again.');
+      console.log(JSON.parse(JSON.stringify(error.response)));
+      alert("Error in the register, try again.");
     }
   };
 
@@ -47,7 +52,7 @@ const Register = () => {
 
           <Link to="/" className="back-link">
             <FiArrowLeft size={16} color="#E02041" />
-            I do not have an account
+            Login
           </Link>
         </section>
 
@@ -65,9 +70,10 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
+            type="text"
             placeholder="WhatsApp"
-            value={whatsApp}
-            onChange={(e) => setWhatsApp(e.target.value)}
+            value={whatsapp}
+            onChange={(e) => setWhatsapp(e.target.value)}
           />
           <div className="input-group">
             <input
