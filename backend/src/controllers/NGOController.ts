@@ -1,23 +1,23 @@
 import { Request, Response } from "express";
-import uuidv4 from "uuid/v4";
 
 import NGO from "../database/models/ngo";
 import Incident from "../database/models/incident";
 import paginate from "../utils/paginate";
+import createUniqueId from "../utils/createUniqueId";
 
 class NGOController {
   static async create(req: Request, res: Response) {
-    const { name, email, whatsapp, city, uf } = req.body;
-    const id = uuidv4();
+    const { name, email, whatsapp, city, fu } = req.body;
+    const id = createUniqueId();
 
-    await NGO.create({ id, name, email, whatsapp, city, uf });
+    await NGO.create({ id, name, email, whatsapp, city, fu });
 
     return res.json({ id });
   }
 
   static async list(req: Request, res: Response) {
-    const ongs = await NGO.findAll();
-
+    const { page, pageSize } = req.query;
+    const ongs = await NGO.findAndCountAll(paginate({ page, pageSize }));
     return res.json(ongs);
   }
 
